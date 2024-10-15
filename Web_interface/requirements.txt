@@ -21,3 +21,4 @@ dill==0.3.8
 deepchem==2.7.1
 dgllife==0.3.2
 dgl==2.0.0
+setuptools==75.1.0
