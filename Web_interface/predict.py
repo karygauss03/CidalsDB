@@ -159,7 +159,8 @@ def predict():
                                 add_vertical_space(4)
                                 st.error('Inactive', icon="❌")
                 except Exception as e:
-                    st.error(e)
+                    # st.error(e)
+                    st.error(traceback.format_exc())
                     st.error("Invalid Smile")  # You might want to adjust this message based on the context of the error
 
 
