@@ -143,8 +143,8 @@ def search():
     ### Search By Smiles
     """
 
-    np_data = np.load("./data/data.npy")
-    df_data = pd.read_csv("./data/cidals.csv", dtype={'PUBCHEM_CID': 'Int32'})
+    np_data = np.load("./Web_interface/data/data.npy")
+    df_data = pd.read_csv("./Web_interface/data/cidals.csv", dtype={'PUBCHEM_CID': 'Int32'})
 
     tab1, tab2 = st.tabs(["Molecule SMILE", 'PUBCHEM ID'])
     with tab1:
