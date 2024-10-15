@@ -42,7 +42,7 @@ def load_pickle_files_from_folder(folder_path, name_condition=None):
     
     return file_names
 
-folder_path = "./models"
+folder_path = "./Web_interface/models"
 
 loaded_models_filenames = load_pickle_files_from_folder(folder_path, name_condition=lambda x: x.endswith('.pkl'))
 
@@ -50,9 +50,9 @@ def predict_with_model(smile, model_path):
     #st.text(type(model_path))
     #st.write(model_path)
     
-    if model_path == "./models/Coronavirus_GCN.pkl":
+    if model_path == "./Web_interface/models/Coronavirus_GCN.pkl":
         #st.text("GCN")
-        with open('./models/Coronavirus_GCN.pkl', 'rb') as file:
+        with open('./Web_interface/models/Coronavirus_GCN.pkl', 'rb') as file:
             gcn_model = dill.load(file)
         #st.text(gcn_model)
         y = gcn_predictor(smile, gcn_model)
@@ -129,7 +129,7 @@ def predict():
     st.write("Please select the predictive model corresponding to the pathogen you are interested in:")
 
 
-    data = np.load("./data/data.npy")
+    data = np.load("./Web_interface/data/data.npy")
 
 
 
@@ -152,10 +152,10 @@ def predict():
                         progress_text = "Operation in progress. Please wait."
                     with col2:
                         with st.spinner(progress_text):
-                            if predict_with_model(smile, f"./models/{option}.pkl") == 1:
+                            if predict_with_model(smile, f"./Web_interface/models/{option}.pkl") == 1:
                                 add_vertical_space(4)
                                 st.success('Active', icon="✅")
-                            elif predict_with_model(smile, f"./models/{option}.pkl") == 0:
+                            elif predict_with_model(smile, f"./Web_interface/models/{option}.pkl") == 0:
                                 add_vertical_space(4)
                                 st.error('Inactive', icon="❌")
                 except Exception as e:
@@ -182,9 +182,9 @@ def predict():
                     progress_text = "Operation in progress. Please wait."
                 with colb:
                     with st.spinner(progress_text):
-                        if predict_with_model(smile, f"./models/{option}.pkl") == 1:
+                        if predict_with_model(smile, f"./Web_interface/models/{option}.pkl") == 1:
                             st.success('Active', icon="✅")
-                        elif predict_with_model(smile, f"./models/{option}.pkl") == 0:
+                        elif predict_with_model(smile, f"./Web_interface/models/{option}.pkl") == 0:
                             st.error('Inactive', icon="❌")
             except Exception as e:
                 print(e)
