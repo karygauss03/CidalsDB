@@ -7,7 +7,7 @@ import string
 import time
 from PIL import Image
 
-all_logos = Image.open("./media/all_logos.png")
+all_logos = Image.open("./Web_interface/media/all_logos.png")
 
 def is_valid_email(email):
     # Simple email format validation using regex
