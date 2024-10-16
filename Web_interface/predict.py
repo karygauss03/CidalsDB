@@ -54,8 +54,7 @@ def predict_with_model(smile, model_path):
         #st.text("GCN")
         with open('./Web_interface/models/Coronavirus_GCN.pkl', 'rb') as file:
             gcn_model = dill.load(file)
-        #st.text(gcn_model)
-        print(gcn_model.keys())
+        st.text(gcn_model.keys())
         y = gcn_predictor(smile, gcn_model)
         return y
     else:
