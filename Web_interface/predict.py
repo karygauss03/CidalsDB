@@ -54,7 +54,7 @@ def predict_with_model(smile, model_path):
         #st.text("GCN")
         with open('./Web_interface/models/Coronavirus_GCN.pkl', 'rb') as file:
             st.text(torch.__version__)
-            gcn_model = dill.load(file, ignore = True)
+            gcn_model = pickle.load(file)
         #st.text(gcn_model)
         y = gcn_predictor(smile, gcn_model)
         return y
