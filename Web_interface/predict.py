@@ -53,10 +53,7 @@ def predict_with_model(smile, model_path):
     if model_path == "./Web_interface/models/Coronavirus_GCN.pkl":
         #st.text("GCN")
         with open('./Web_interface/models/Coronavirus_GCN.pkl', 'rb') as file:
-            # Load the model with CPU mapping
             gcn_model = dill.load(file)
-            # Ensure any CUDA tensors are loaded on the CPU
-            gcn_model = torch.load(file, map_location=torch.device('cpu'))
         st.text(gcn_model.keys())
         y = gcn_predictor(smile, gcn_model)
         return y
