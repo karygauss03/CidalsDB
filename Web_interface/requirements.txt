@@ -15,7 +15,7 @@ streamlit-modal==0.1.0
 lorem-text==2.1
 plotly==5.16.0
 captcha==0.5.0
-torch==2.2.1
+torch==2.1.0
 lxml==4.6.1
 dill==0.3.8
 deepchem==2.7.1
