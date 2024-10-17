@@ -29,7 +29,6 @@ streamlit_style = """
             @import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
 			html, body, [class*="css"]  {
             font-family: 'Noto Sans', sans-serif;
-            font-size: 20px;
             }
             """
 st.markdown(streamlit_style, unsafe_allow_html=True)
