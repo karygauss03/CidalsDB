@@ -1,5 +1,5 @@
 section[data-testid='stSidebar'] {
-    background-color: #e1e1e1;
+    background-color: #383838;
     min-width: unset !important;
     width: unset !important;
     flex-shrink: unset !important;
@@ -24,7 +24,7 @@ button[kind="header"] {
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #2596be;
+        background-color: #111;
         overflow-x: hidden;
         transition: 0.3s ease;
         padding-top: 60px;
