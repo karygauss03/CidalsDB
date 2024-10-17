@@ -136,9 +136,7 @@ def is_valid_email(email):
     return re.match(pattern, email)
 
 def search():
-    # st.title("Search")
-    st.cache_data.clear()  # Clears cached data
-    st.markdown("<h1 style='font-size:60px;'>Search</h1>", unsafe_allow_html=True)
+    st.title("Search")
 
     st.write("Please insert a valid SMILE")
 
