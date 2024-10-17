@@ -3,7 +3,7 @@ section[data-testid='stSidebar'] {
     min-width: unset !important;
     width: unset !important;
     flex-shrink: unset !important;
-    width: 300px;
+    width: 250px;
 }
 
 button[kind="header"] {
@@ -19,7 +19,7 @@ button[kind="header"] {
     /* The navigation menu specs and size */
     section[data-testid='stSidebar']>div {
         height: 100%;
-        width: 300px;
+        width: 250px;
         position: relative;
         z-index: 1;
         top: 0;
@@ -38,7 +38,7 @@ button[kind="header"] {
 
     /* ON HOVER */
     section[data-testid='stSidebar']>div:hover {
-        width: 300px;
+        width: 250px;
     }
     /* The button on the streamlit navigation menu - hidden */
     button[kind="header"] {
