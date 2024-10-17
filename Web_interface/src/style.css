@@ -8,7 +8,7 @@ section[data-testid='stSidebar'] {
 
 button[kind="header"] {
     background-color: transparent;
-    color: rgb(180, 167, 141)
+    color: rgb(238, 238, 238)
 }
 
 @media(hover) {
@@ -24,7 +24,7 @@ button[kind="header"] {
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #2596be;
+        background-color: #537dbe;
         overflow-x: hidden;
         transition: 0.3s ease;
         padding-top: 60px;
