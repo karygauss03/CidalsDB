@@ -2,27 +2,23 @@ import traceback
 import streamlit as st
 from stmol import showmol
 import py3Dmol
-from rdkit.Chem import Draw
 from rdkit import Chem
 from rdkit.Chem import AllChem
 import pubchempy
-import rdkit.Chem.Descriptors as cd
-import rdkit.Chem.Lipinski as lip
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 import numpy as np
 from scipy.spatial import distance
 import pubchempy as pcp
-from PIL import Image
 import pickle
-from sklearn.neural_network import MLPClassifier
 import os
 import pickle
 import torch
 from streamlit_extras.add_vertical_space import add_vertical_space
 import deepchem as dc
-from deepchem.data import NumpyDataset, DiskDataset
+from deepchem.data import NumpyDataset
 import dill
+from transformers import RobertaTokenizerFast
 
 
 def gcn_predictor(smiles_string, model):  
@@ -31,6 +27,16 @@ def gcn_predictor(smiles_string, model):
     dataset = NumpyDataset(X=features, y=None, ids=None)
     predictions = np.argmax(model.predict(dataset), axis=1)
     return predictions[0]
+
+def chemebrta_predictor(smiles_string, model):
+    tokenizer = RobertaTokenizerFast.from_pretrained('seyonec/SMILES_tokenized_PubChem_shard00_160k')
+    
+    inputs = tokenizer(smiles_string, truncation=True, padding=True)
+    with torch.no_grad():
+        outputs = model(**inputs)
+    
+    predictions = torch.argmax(outputs.logits, dim=1)
+    return predictions.item()
 
 def load_pickle_files_from_folder(folder_path, name_condition=None):
     file_names = []
@@ -56,6 +62,11 @@ def predict_with_model(smile, model_path):
             gcn_model = dill.load(file)
         # st.text(gcn_model.keys())
         y = gcn_predictor(smile, gcn_model)
+        return y
+    elif model_path == './Web_interface/models/Covid_chemberta_model.pkl':
+        with open(model_path, 'rb') as file:
+            chemberta_model = dill.load(file)
+        y = chemebrta_predictor(smile, chemberta_model)
         return y
     else:
         molecule = Chem.MolFromSmiles(smile)
